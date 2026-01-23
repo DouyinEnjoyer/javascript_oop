@@ -37,7 +37,7 @@ class tanyerdeosztalyszintaktis
     constructor(szin,meret)
     {
         this.szin = szin
-        this.meret = szin
+        this.meret = meret
     }
     elmege()
     {
