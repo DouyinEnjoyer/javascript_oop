@@ -69,7 +69,8 @@ bg=blue</panel_attributes><additional_attributes></additional_attributes></eleme
 - work: string
 - concept: string 
 -
-(mindegyiknek van getter/setter, (koviorarabeirni)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>238</x><y>1015</y><w>112</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
+(mindegyiknek van getter/setter, (koviorarabeirni)
++ validate(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>238</x><y>1015</y><w>112</w><h>28</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..*</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>686</y><w>98</w><h>112</h></coordinates><panel_attributes>TableCallback
 -
 (authorList: Author[])
