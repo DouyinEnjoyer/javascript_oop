@@ -7,6 +7,7 @@ import { Navbar } from "./navigationbar.js"
 import { TableView } from "./table.js";
 import { FormController } from "./form.js";
 import { AuthorManager } from "./manager.js";
+import { ImportExport } from "./importexport.js";
 
 const formFields = [{
     id: 'author',
@@ -34,6 +35,10 @@ const table = new TableView('table', headerArray, manager);
 table.appendTo(document.body);
 const form = new FormController('tableForm',formFields,manager);
 form.appendTo(document.body);
+const importExport = new ImportExport("importexport",manager)
+importExport.appendTo(document.body)
 navbar.addViewElement('Table', table);
 navbar.addViewElement('Form', form);
+
+navbar.addViewElement("Import/export", importExport)
 navbar.activate('table');

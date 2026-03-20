@@ -6,6 +6,10 @@
  * @callback AddElementResultCallback
  * @param {string} resultMessage
  * @returns {void}
+ * 
+ * @callback ImportResultCallback
+ * @param {string} resultMessage
+ * @returns {void}
  */
 
 class AuthorManager {
@@ -28,10 +32,22 @@ class AuthorManager {
      * @type {AddElementResultCallback}
      */
     #addElementResultCallback
+    /**
+     * @type {ImportResultCallback}
+     */
+    #importResultCallback
+    /**
+     * @param {ImportResultCallback} value 
+     */
+    set importResultCallback(value)
+    {
+        this.#importResultCallback = value
 
+    }
     /**
      * @param {AddElementResultCallback} value
      */
+
     set AddElementResultCallback(value)
     {
         this.#addElementResultCallback = value
@@ -65,6 +81,34 @@ class AuthorManager {
             this.#tableCallback(this.#authorList);
         }
     }
+    /**
+     * 
+     * @param {import(".").AuthorType[]} elementList 
+     * @returns {void}
+     */
+    addElementList(elementList)
+    {
+        for (const elem of elementList)
+        {
+            const author = new Author()
+            author.id = this.#authorList.length
+            author.name = elem.author
+            author.concept = elem.concept
+            author.work = elem.work
+            if(author.validate())
+            {
+                this.#authorList.push(author)
+                this.#importResultCallback("sikeres volt a filefeltoltes")
+
+
+            }
+            else
+            {
+                this.#importResultCallback("nem volt sikeres a filefeltoltes")
+                break
+            }
+        }
+    }
 
     /**
      * @returns {void} 
@@ -73,6 +117,19 @@ class AuthorManager {
         if (this.#tableCallback) {
             this.#tableCallback(this.#authorList);
         }
+    }
+    /**
+     * @returns {string}
+     */
+    getExportContent()
+    {
+        const result = []
+        for(const author of this.#authorList)
+        {
+            result.push(`${author.name};${author.work};${author.concept}`)
+
+        }
+        return result.join("\n")
     }
 }
 
